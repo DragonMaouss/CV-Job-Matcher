@@ -1,3 +1,4 @@
+import os
 import kagglehub
 import pandas as pd
 from preprocess import preprocess_text
@@ -15,6 +16,8 @@ resumes_df = df.loc[:, "Resume"]
 jobs_df = df.loc[:, "Job Description"]
 
 # Save the extracted columns as separate CSV files
+if not os.path.exists("../data"):
+    os.makedirs("../data", exist_ok=True)
 resumes_df.to_csv("../data/resumes.csv", index=False)
 jobs_df.to_csv("../data/job.csv", index=False)
 
